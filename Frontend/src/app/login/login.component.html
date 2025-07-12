@@ -1,0 +1,19 @@
+<div>
+  <h3>Login</h3>
+
+  <div>
+    <form (submit)="login()" class="mb-5">
+      <div class="form-group mb-2">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" name="email" id="email" placeholder="Email" [(ngModel)]="loginData.email">
+        <br>
+        <label for="password">Password</label>
+        <br>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Password" [(ngModel)]="loginData.password" >
+      </div>
+
+      <br>
+      <button type="submit" class="btn btn-primary" [disabled]="loginData.email=='' || loginData.password==''">Submit</button>
+    </form>
+  </div>
+</div>

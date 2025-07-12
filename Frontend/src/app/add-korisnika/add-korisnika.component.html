@@ -1,0 +1,57 @@
+<div *ngIf="isVisible">
+  <h3>Add user</h3>
+
+  <div>
+    <form (submit)="addUser()" class="mb-5">
+      <div class="form-group mb-2">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" name="email" id="email" placeholder="Email" [(ngModel)]="user.email">
+        <br>
+        <label for="name">Name</label>
+        <input type="text" class="form-control" name="name" id="name" placeholder="Name" [(ngModel)]="user.name">
+        <br>
+        <label for="lastName">Last name</label>
+        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last name" [(ngModel)]="user.lastName">
+        <br>
+        <label for="password">Password</label>
+        <br>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Password" [(ngModel)]="user.password" >
+        <br>
+        <input type="checkbox" name="can_create_users" id="can_create_users" value="can_create_users" [(ngModel)]="user.can_create_users">
+        <label for="can_create_users">Can Create Users</label>
+        <br>
+        <input type="checkbox" name="can_read_users" id="can_read_users" placeholder="can_read_users" [(ngModel)]="user.can_read_users">
+        <label for="can_read_users">Can Read Users</label>
+        <br>
+        <input type="checkbox" name="can_update_users" id="can_update_users" placeholder="can_update_users" [(ngModel)]="user.can_update_users">
+        <label for="can_update_users">Can Update Users</label>
+        <br>
+        <input type="checkbox" name="can_delete_users" id="can_delete_users" placeholder="can_delete_users" [(ngModel)]="user.can_delete_users">
+        <label for="can_delete_users">Can Delete Users</label>
+        <br>
+        <input type="checkbox" name="can_search_order" id="can_search_order" placeholder="can_search_order" [(ngModel)]="user.can_search_order">
+        <label for="can_search_order">Can Search Order</label>
+        <br>
+        <input type="checkbox" name="can_place_order" id="can_place_order" placeholder="can_place_order" [(ngModel)]="user.can_place_order">
+        <label for="can_place_order">Can Place Order</label>
+        <br>
+        <input type="checkbox" name="can_cancel_order" id="can_cancel_order" placeholder="can_cancel_order" [(ngModel)]="user.can_cancel_order">
+        <label for="can_cancel_order">Can Cancel Order</label>
+        <br>
+        <input type="checkbox" name="can_track_order" id="can_track_order" placeholder="can_track_order" [(ngModel)]="user.can_track_order">
+        <label for="can_track_order">Can Track Order</label>
+        <br>
+        <input type="checkbox" name="can_schedule_order" id="can_schedule_order" placeholder="can_schedule_order" [(ngModel)]="user.can_schedule_order">
+        <label for="can_schedule_order">Can Schedule Order</label>
+        <br>
+      </div>
+
+      <br>
+      <button type="submit" class="btn btn-primary" [disabled]="user.email=='' || user.name=='' || user.lastName=='' || user.password==''">Add</button>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="!isVisible">
+  <p>"Can create users" permission is missing</p>
+</div>

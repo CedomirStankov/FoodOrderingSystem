@@ -1,0 +1,117 @@
+<div *ngIf="isVisibleSearchOrder && isVisibleCreateUser">
+  <h3>All orders</h3>
+
+  <div>
+    <form class="mb-5" (submit)="filter()" >
+      <div class="form-group mb-2">
+        <label for="status">Status</label>
+        <br>
+        <select name="status" id="status" class="form-control" [(ngModel)]="filterData.status">
+          <option value="ORDERED">Ordered</option>
+          <option value="PREPARING">Preparing</option>
+          <option value="IN_DELIVERY">In Delivery</option>
+          <option value="DELIVERED">Delivered</option>
+          <option value="CANCELED" >Canceled</option>
+        </select>
+        <br>
+        <label for="dateFrom">Date from:</label>
+        <input type="date" id="dateFrom" name="dateFrom" class="form-control" [(ngModel)]="filterData.dateFrom">
+        <br>
+        <label for="dateTo">Date to:</label>
+        <input type="date" id="dateTo" name="dateTo" class="form-control" [(ngModel)]="filterData.dateTo">
+        <br>
+        <label for="userId">User Id</label>
+        <br>
+        <input type="text" class="form-control" name="userId" id="userId" placeholder="User Id" [(ngModel)]="filterData.userId">
+      </div>
+
+      <br>
+      <button type="submit" class="btn btn-primary" >Filter</button>
+    </form>
+  </div>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Order Id</th>
+      <th *ngIf="isVisibleTrack">Status</th>
+      <th>Active</th>
+      <th>Items</th>
+      <th>Created By</th>
+      <th *ngIf="isVisibleCancel">Cancel</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let order of orders">
+      <td>{{order.id}}</td>
+      <td *ngIf="isVisibleTrack">{{order.status}}</td>
+      <td>{{order.active}}</td>
+      <td>{{order.items}}</td>
+      <td>User {{order.createdBy}}</td>
+      <td *ngIf="isVisibleCancel && order.status=='ORDERED'"><button (click)="cancelOrder(order.id)" class="btn btn-primary">Cancel</button></td>
+<!--      <td [routerLink]="isVisibleUpdate ? ['/update', user.id] : null" >{{user.email}}</td>-->
+<!--      <td *ngIf="isVisibleDelete"><button (click)="deleteUser(user.id)" class="btn btn-primary">Delete</button></td>-->
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="isVisibleSearchOrder && !isVisibleCreateUser">
+  <h3>My orders</h3>
+
+  <div>
+    <form class="mb-5" (submit)="filter()" >
+      <div class="form-group mb-2">
+        <label for="status2">Status</label>
+        <br>
+        <select name="status" id="status2" class="form-control" [(ngModel)]="filterData.status">
+          <option value="ORDERED">Ordered</option>
+          <option value="PREPARING">Preparing</option>
+          <option value="IN_DELIVERY">In Delivery</option>
+          <option value="DELIVERED">Delivered</option>
+          <option value="CANCELED">Canceled</option>
+        </select>
+        <br>
+        <label for="dateFrom2">Date from:</label>
+        <input type="date" id="dateFrom2" name="dateFrom" class="form-control" [(ngModel)]="filterData.dateFrom">
+        <br>
+        <label for="dateTo2">Date to:</label>
+        <input type="date" id="dateTo2" name="dateTo" class="form-control" [(ngModel)]="filterData.dateTo">
+      </div>
+
+      <br>
+      <button type="submit" class="btn btn-primary" >Filter</button>
+    </form>
+  </div>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Order Id</th>
+      <th *ngIf="isVisibleTrack">Status</th>
+      <th>Active</th>
+      <th>Items</th>
+      <th>Created By</th>
+      <th *ngIf="isVisibleCancel">Cancel</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let order of orders">
+      <td>{{order.id}}</td>
+      <td *ngIf="isVisibleTrack">{{order.status}}</td>
+      <td>{{order.active}}</td>
+      <td>{{order.items}}</td>
+      <td>User {{order.createdBy}}</td>
+      <td *ngIf="isVisibleCancel && order.status=='ORDERED'"><button (click)="cancelOrder(order.id)" class="btn btn-primary">Cancel</button></td>
+      <!--      <td [routerLink]="isVisibleUpdate ? ['/update', user.id] : null" >{{user.email}}</td>-->
+      <!--      <td *ngIf="isVisibleDelete"><button (click)="deleteUser(user.id)" class="btn btn-primary">Delete</button></td>-->
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!--<div *ngIf="!isVisibleSearchOrder">-->
+<!--  <p>"Can search orders" permission is missing</p>-->
+<!--</div>-->

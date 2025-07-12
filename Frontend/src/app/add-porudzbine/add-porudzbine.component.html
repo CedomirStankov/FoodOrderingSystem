@@ -1,0 +1,50 @@
+<div *ngIf="isVisiblePlaceOrder">
+  <h3>Add order</h3>
+
+  <div>
+    <form class="mb-5" (submit)="addOrders()">
+      <div class="form-group mb-2">
+        <input type="checkbox" id="pica" name="pica" value="Pica" [(ngModel)]="food.food1">
+        <label for="pica"> Pica </label><br>
+        <input type="checkbox" id="cevapi" name="cevapi" value="Cevapi" [(ngModel)]="food.food2">
+        <label for="cevapi"> Cevapi </label><br>
+        <input type="checkbox" id="piletina" name="piletina" value="Piletina" [(ngModel)]="food.food3">
+        <label for="piletina"> Piletina </label><br>
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary" [disabled]="!food.food1 && !food.food2 && !food.food3 ">Order!</button>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="isVisibleScheduleOrder">
+  <h3>Schedule order</h3>
+
+  <div>
+    <form class="mb-5" (submit)="scheduleOrder()">
+      <div class="form-group mb-2">
+        <input type="checkbox" id="pica2" name="pica2" value="Pica" [(ngModel)]="foodScheduled.food1">
+        <label for="pica2"> Pica </label><br>
+        <input type="checkbox" id="cevapi2" name="cevapi2" value="Cevapi" [(ngModel)]="foodScheduled.food2">
+        <label for="cevapi2"> Cevapi </label><br>
+        <input type="checkbox" id="piletina2" name="piletina2" value="Piletina"[(ngModel)]="foodScheduled.food3">
+        <label for="piletina2"> Piletina </label><br>
+      </div>
+      <br>
+      <label for="scheduledTime">Scheduled Time:</label>
+      <br>
+      <input class="form-control" id="scheduledTime" type="datetime-local" name="scheduledTime" required [(ngModel)]="scheduledOrder.dateTime"/>
+      <br>
+      <button type="submit" class="btn btn-primary">Schedule!</button>
+    </form>
+  </div>
+
+</div>
+
+<div *ngIf="!isVisiblePlaceOrder">
+  <p>"Can place orders" permission is missing</p>
+</div>
+
+<div *ngIf="!isVisibleScheduleOrder">
+  <p>"Can schedule orders" permission is missing</p>
+</div>

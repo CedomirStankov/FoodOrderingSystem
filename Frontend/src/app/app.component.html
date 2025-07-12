@@ -1,0 +1,18 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <div class="navbar-nav">
+          <a [routerLink]="'/login'" class="nav-link active" aria-current="page">Login</a>
+          <a [routerLink]="'/prikaz'" class="nav-link active" aria-current="page">All users</a>
+          <a [routerLink]="'/add'" class="nav-link active" aria-current="page">Add users</a>
+          <a [routerLink]="'/addOrder'" class="nav-link active" aria-current="page">Add orders</a>
+          <a [routerLink]="'/searchOrder'" class="nav-link active" aria-current="page">Search orders</a>
+          <a [routerLink]="'/errorHistory'" class="nav-link active" aria-current="page">Error History</a>
+        </div>
+    </div>
+  </nav>
+</header>
+
+<div class="container pt-3">
+  <router-outlet></router-outlet>
+</div>

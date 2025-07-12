@@ -1,0 +1,60 @@
+<div *ngIf="isVisibleCreateUser">
+  <h3>Error Messages History</h3>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Message</th>
+      <th>Order Id</th>
+      <th>User Id</th>
+      <th>Created at</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let em of errorMessages">
+      <td>{{em.id}}</td>
+      <td>{{em.message}}</td>
+      <td>{{em.orderId}}</td>
+      <td>{{em.userId}}</td>
+      <td>{{em.createdAt}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="outer-container">
+    <mat-paginator [length]="totalMessages" [pageSize]="pageSize" (page)="onPageChange($event)">
+    </mat-paginator>
+  </div>
+
+</div>
+
+<div *ngIf="!isVisibleCreateUser">
+  <h3>Error Messages History</h3>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Message</th>
+      <th>Order Id</th>
+      <th>Created at</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let em of errorMessages">
+      <td>{{em.id}}</td>
+      <td>{{em.message}}</td>
+      <td>{{em.orderId}}</td>
+      <td>{{em.createdAt}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="outer-container">
+    <mat-paginator [length]="totalMessages" [pageSize]="pageSize" (page)="onPageChange($event)">
+    </mat-paginator>
+  </div>
+</div>

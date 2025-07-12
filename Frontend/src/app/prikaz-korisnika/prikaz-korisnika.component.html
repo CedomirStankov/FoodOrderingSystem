@@ -1,0 +1,45 @@
+<div *ngIf="isVisibleRead">
+  <h3>All users</h3>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Can Read Users</th>
+      <th>Can Create Users</th>
+      <th>Can Update Users</th>
+      <th>Can Delete User</th>
+      <th>Can Search Order</th>
+      <th>Can Place Order</th>
+      <th>Can Cancel Order</th>
+      <th>Can Track Order</th>
+      <th>Can Schedule Order</th>
+      <th *ngIf="isVisibleDelete">Delete</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user.name}}</td>
+      <td>{{user.lastName}}</td>
+      <td [routerLink]="isVisibleUpdate ? ['/update', user.id] : null" >{{user.email}}</td>
+      <td>{{user.can_read_users}}</td>
+      <td>{{user.can_create_users}}</td>
+      <td>{{user.can_update_users}}</td>
+      <td>{{user.can_delete_users}}</td>
+      <td>{{user.can_search_order}}</td>
+      <td>{{user.can_place_order}}</td>
+      <td>{{user.can_cancel_order}}</td>
+      <td>{{user.can_track_order}}</td>
+      <td>{{user.can_schedule_order}}</td>
+      <td *ngIf="isVisibleDelete"><button (click)="deleteUser(user.id)" class="btn btn-primary">Delete</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="!isVisibleRead">
+  <p>"Can read users" permission is missing</p>
+</div>
