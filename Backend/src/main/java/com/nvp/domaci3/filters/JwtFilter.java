@@ -53,7 +53,7 @@ public class JwtFilter extends OncePerRequestFilter {
               Optional<User> user = userService.findByEmail(username);
 
               if (user.isPresent()) {
-                // Generišite liste dozvola na osnovu polja iz baze
+                
                 List<GrantedAuthority> authorities = new ArrayList<>();
                 if (user.get().getCan_read_users()) {
                   authorities.add(new SimpleGrantedAuthority("READ_USERS"));
